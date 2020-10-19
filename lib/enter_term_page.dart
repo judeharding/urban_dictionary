@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/semantics.dart';
 
 class EnterTermPage extends StatefulWidget {
+  // key for the main stack
+  static final valueKey = ValueKey('EnterTermPage');
+
+  // initializer (searchForTerm)
+  EnterTermPage({Key key, this.searchForTerm}) : super(key: key);
+  //video 56 min mark WTF???
+
+  // property coming in is initialized
+  final ValueChanged<String> searchForTerm;
+
   @override
   State<StatefulWidget> createState() => _EnterTermPageState();
 }
@@ -13,7 +23,8 @@ class _EnterTermPageState extends State<EnterTermPage> {
 
 // SEARCH FUNCTION
   void _search() {
-    print(_textFieldController.text);
+    //sending the field data to the searchForTerm widget
+    widget.searchForTerm(_textFieldController.text);
   }
 
 //SEARCH FORM

@@ -5,7 +5,7 @@ class EnterTermPage extends StatefulWidget {
   // key for the main stack
   static final valueKey = ValueKey('EnterTermPage');
 
-  // initializer (searchForTerm)
+  // initializer (searchForTerm) creates an instance of this widget
   EnterTermPage({Key key, this.searchForTerm}) : super(key: key);
   //video 56 min mark WTF???
 
@@ -23,7 +23,7 @@ class _EnterTermPageState extends State<EnterTermPage> {
 
 // SEARCH FUNCTION
   void _search() {
-    //sending the field data to the searchForTerm widget
+    //sending the field data FROM the STATEFUL EnterTermPage widget
     widget.searchForTerm(_textFieldController.text);
   }
 

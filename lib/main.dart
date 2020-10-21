@@ -10,7 +10,7 @@ void main() {
 }
 
 // https://www.youtube.com/watch?v=yAsd67eFIeE
-// ...105
+// ...133
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _MyAppState();
@@ -81,6 +81,9 @@ class _MyAppState extends State<MyApp> {
             ),
         ],
         onPopPage: (route, result) {
+          final materialPage = route.settings as MaterialPage;
+          final pageKey = materialPage.key;
+
           return route.didPop(result);
         },
       ),

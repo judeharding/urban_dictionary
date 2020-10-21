@@ -9,11 +9,32 @@ class TermDetailsPage extends StatelessWidget {
   TermDetailsPage({Key key, this.term}) : super(key: key);
   final Term term;
 
+  Widget termDetails() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(term.definition),
+        Spacer(),
+        Row(
+          children: [
+            Text('Likes:  ${term.likes}'),
+            Padding(padding: EdgeInsets.all(8.0)),
+            Text('Dislikes: ${term.dislikes}'),
+          ],
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(term.word),
+      ),
+      body: SafeArea(
+        minimum: EdgeInsets.all(16.0),
+        child: termDetails(),
       ),
     );
   }

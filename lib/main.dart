@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //
 import 'package:urban_dictionary/enter_term_page.dart';
+import 'package:urban_dictionary/term_details_page.dart';
 import 'package:urban_dictionary/terms_page.dart';
 import 'package:urban_dictionary/term.dart';
 
@@ -18,11 +19,20 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // handler for the stack
   String _searchedTerm;
+  Term _selectedTerm;
 
   void _searchForTerm(String term) {
     setState(() {
       this._searchedTerm = term;
       print(term);
+    });
+  }
+
+  void _didSelectTerm(Term term) {
+    setState(() {
+      this._selectedTerm = term;
+      print(term.word);
+      print(term.definition);
     });
   }
 
@@ -58,6 +68,15 @@ class _MyAppState extends State<MyApp> {
                       likes: 5,
                       dislikes: 2)
                 ],
+                didSelectTerm: _didSelectTerm,
+              ),
+            ),
+          //show term details page
+          if (_selectedTerm != null)
+            MaterialPage(
+              key: TermDetailsPage.valueKey,
+              child: TermDetailsPage(
+                term: _selectedTerm,
               ),
             ),
         ],

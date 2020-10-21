@@ -5,10 +5,12 @@ import 'package:urban_dictionary/term.dart';
 class TermsPage extends StatelessWidget {
   static final valueKey = ValueKey('TermsPage');
 
-  TermsPage({Key key, this.title, this.terms}) : super(key: key);
+  TermsPage({Key key, this.title, this.terms, this.didSelectTerm})
+      : super(key: key);
 
   final String title;
   final List<Term> terms;
+  final ValueChanged<Term> didSelectTerm;
 
   Widget termsList() {
     return ListView.builder(
@@ -21,7 +23,8 @@ class TermsPage extends StatelessWidget {
                 title: Text(term.word),
                 subtitle: Text(term.definition),
                 onTap: () {
-                  print(term.word);
+                  // print(term.word);
+                  didSelectTerm(term);
                 }),
           );
         });

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //
 import 'package:urban_dictionary/enter_term_page.dart';
+import 'package:urban_dictionary/networking_service.dart';
 import 'package:urban_dictionary/term_details_page.dart';
 import 'package:urban_dictionary/terms_page.dart';
 import 'package:urban_dictionary/term.dart';
@@ -10,7 +11,7 @@ void main() {
 }
 
 // https://www.youtube.com/watch?v=yAsd67eFIeE
-// ...133
+// ...209
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _MyAppState();
@@ -20,10 +21,16 @@ class _MyAppState extends State<MyApp> {
   // handler for the stack
   String _searchedTerm;
   Term _selectedTerm;
+  List<Term> _terms = [];
 
-  void _searchForTerm(String term) {
+  final _networkingService = NetworkingService();
+
+  void _searchForTerm(String term) async {
+    final terms = await _networkingService.defineTerm(term);
+
     setState(() {
       this._searchedTerm = term;
+      this._terms = terms;
       print(term);
     });
   }
@@ -61,13 +68,7 @@ class _MyAppState extends State<MyApp> {
               key: TermsPage.valueKey,
               child: TermsPage(
                 title: _searchedTerm,
-                terms: [
-                  Term(
-                      word: 'dummy term',
-                      definition: 'fake definition',
-                      likes: 5,
-                      dislikes: 2)
-                ],
+                terms: this._terms,
                 didSelectTerm: _didSelectTerm,
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 //
 import 'package:urban_dictionary/term.dart';
 
@@ -13,7 +14,7 @@ class TermDetailsPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(term.definition),
+        Html(data: term.htmlDefinition),
         Spacer(),
         Row(
           children: [

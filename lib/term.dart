@@ -7,6 +7,12 @@ class Term {
   int likes;
   int dislikes;
 
+  // working with flutter_html dependency to mark up
+  // the definitions with brackets
+  String get htmlDefinition {
+    return definition.replaceAll('[', '<b>').replaceAll(']', '</b>');
+  }
+
   // declaring fromJson from the define_term_response.dart
   Term.fromJson(Map<String, dynamic> json)
 

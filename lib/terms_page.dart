@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 //
 import 'package:urban_dictionary/term.dart';
 
@@ -21,7 +22,7 @@ class TermsPage extends StatelessWidget {
           return Card(
             child: ListTile(
                 title: Text(term.word),
-                subtitle: Text(term.definition),
+                subtitle: Html(data: term.htmlDefinition),
                 onTap: () {
                   // print(term.word);
                   didSelectTerm(term);

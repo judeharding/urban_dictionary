@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
         onPopPage: (route, result) {
           final materialPage = route.settings as MaterialPage;
           final pageKey = materialPage.key;
-
+          // using if stmts instead of setstate to clear out the values
           if (pageKey == TermsPage.valueKey) {
             this._searchedTerm = null;
           }

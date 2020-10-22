@@ -84,6 +84,13 @@ class _MyAppState extends State<MyApp> {
           final materialPage = route.settings as MaterialPage;
           final pageKey = materialPage.key;
 
+          if (pageKey == TermsPage.valueKey) {
+            this._searchedTerm = null;
+          }
+
+          if (pageKey == TermDetailsPage.valueKey) {
+            this._selectedTerm = null;
+          }
           return route.didPop(result);
         },
       ),
